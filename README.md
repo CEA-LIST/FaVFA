@@ -1,7 +1,5 @@
 # 🔍Private code for Fairness Analysis for Face Verification 📊
 
-***
-
 ## ✨ Overview
 This repository provides tools for conducting a comprehensive fairness analysis of face verification models. It is part of the study presented in the paper:
 **[Fairer Analysis and Demographically Balanced Face Generation for Fairer Face Verification](LINK HERE)**.
@@ -21,13 +19,13 @@ The analysis uses precomputed demographic attributes stored in  `data/`. The fol
   - `x_dist`,`y_dist`,`z_dist`: distance variables along each spacial dimension. 
 
 **Note**: Negative pairs with obvious demographic differences (e.g., different ethnicities or genders) are filtered out. The analysis focuses on "**hard**" negative pairs, as detailed in the paper.
-***
+
 ## 🗂️ Supported Datasets
 This script supports the following datasets for evaluation:
 - RFW: [Racial Faces in the Wild](http://whdeng.cn/RFW/testing.html)
 - BFW: [Balanced Faces in the Wild](https://ieee-dataport.org/documents/balanced-faces-wild)
 - FAVCI2D: [Face Verification with Challenging Imposters and Diversified Demographics](https://github.com/AIMultimediaLab/FaVCI2D-Face-Verification-with-Challenging-Imposters-and-Diversified-Demographics)
-***
+
 ## 📏Computed metrics
 The script computes the following metrics, in order:<br>
 * 1️⃣ **Basic metrics**:
@@ -54,8 +52,6 @@ The script computes the following metrics, in order:<br>
     * 95% Confidence Interval (modifiable via `--alpha`).
     * Significance p-value.
 
-***
-
 ## ⚙️ Example Usage
 Run the analysis using a single command: 
 ```bash
@@ -68,7 +64,6 @@ The results file must be a CSV with the following columns:
 - `img_2`: filename of the second image in the pair
 - `dist`: L2 distance between the embeddings of the two images (_automatically converted to angles_).
 
-***
 
 ## 🛠️ Setup and Installation
 To install dependencies, run:
@@ -78,7 +73,6 @@ pip install -r requirements.txt
 Ensure the `data/` directory is populated with the necessary demographic attributes before running the script.
 
 
-***
 
 ## 🙌 Acknowledgments
 Special thanks to the developers of [Fairlearn](https://fairlearn.org/), [FairFace](https://github.com/joojs/fairface), and [Statsmodels](https://www.statsmodels.org/stable/index.html) for their invaluable tools and resources.
