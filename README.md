@@ -1,4 +1,12 @@
 # 🔍Private code for Fairness Analysis for Face Verification 📊
+## Table of Contents
+1. [✨ Overview](#-overview)
+2. [🗂️ Supported Datasets](#️-supported-datasets)
+3. [📏 Computed Metrics](#computed-metrics)
+4. [⚙️ Example Usage](#️-example-usage)
+5. [🛠️ Setup and Installation](#️-setup-and-installation)
+6. [🙌 Acknowledgments](#-acknowledgments)
+
 
 ## ✨ Overview
 This repository provides tools for conducting a comprehensive fairness analysis of face verification models. It is part of the study presented in the paper:
