@@ -19,7 +19,7 @@ def load(dataset, results_path):
     """
     results = pd.read_csv(results_path)
 
-    assert tuple(results.columns) == ('img_1', 'img_2', 'dist'), "Results csv must have columns 'person_1', 'person_2', 'dist'"
+    assert tuple(results.columns) == ('img_1', 'img_2', 'dist'), "Results csv must have columns 'img_1', 'img_2', 'dist'"
 
     # embedding distance to angles
     results['dist'] = results['dist'].apply(lambda x: np.arccos(1 - x ** 2 / 2))
