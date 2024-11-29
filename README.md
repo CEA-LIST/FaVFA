@@ -5,6 +5,8 @@ This repository provides tools for conducting a comprehensive fairness analysis 
 
 If you are rather intersted by the fair dataset of synthetic faces and the code to generate one, look at [this repository](https://github.com/afm215/FaVGen-dev).
 
+It is [easy to install](#️-setup-and-installation) with few dependencies and [easy to use](#️-example-usage) on [three face academic verification benchmarks](#️-supported-datasets)
+
 ## Table of Contents
 1. [✨ Overview](#-overview)
 2. [🗂️ Supported Datasets](#️-supported-datasets)
@@ -40,6 +42,8 @@ This script supports the following datasets for evaluation:
 - BFW: [Balanced Faces in the Wild](https://ieee-dataport.org/documents/balanced-faces-wild)
 - FAVCI2D: [Face Verification with Challenging Imposters and Diversified Demographics](https://github.com/AIMultimediaLab/FaVCI2D-Face-Verification-with-Challenging-Imposters-and-Diversified-Demographics)
 
+For the standard list of pairs, the corresponding attribute labels are pre-computed and savec in csv files that can be found in `data/`.
+
 ## 📏Computed metrics
 The script computes the following metrics, in order:<br>
 * 1️⃣ **Basic metrics**:
@@ -69,15 +73,18 @@ The script computes the following metrics, in order:<br>
 ## ⚙️ Example Usage
 Run the analysis using a single command: 
 ```bash
-python compute_metrics.py --dataset=rfw --results_path=model_results/BUPT_RFW.csv
+python compute_metrics.py --dataset=rfw --model_dist=model_results/BUPT_RFW.csv
 ```
-Use the `--alpha` flag ro modify the 95% confidence interval (default is 0.05 for 95% confidence intervals).
-### Input Format
-The results file must be a CSV with the following columns:
+Your face verification method must be tested on one of the available benchmarks, specified by `--dataset`. [Available benchmarks](#️-supported-datasets) are `bfw`, `favcid` and `rfw`. 
+
+Your face verification method should be run on the standard testing image pairs (two first columns in `data/xxx.csv`). The resulting distances for each pair has to be saved in a CSV file with the following columns:
 - `img_1`: filename of the first image in the pair
 - `img_2`: filename of the second image in the pair
 - `dist`: L2 distance between the embeddings of the two images (_automatically converted to angles_).
 
+Let specity the path to this file with the flag `--model_dist`. We provide such files in `model_results/`, corresponding to the approach we proposed in our paper.
+
+Use the `--alpha` flag to modify the 95% confidence interval (default is 0.05 for 95% confidence intervals).
 
 ## 🛠️ Setup and Installation
 To install dependencies, run:
@@ -99,7 +106,6 @@ If you find this work useful and use it on your own research, please cite our pa
   booktitle = {Winter Conference on Applications of Computer Vision (WACV)"},
   address = "Tucson, Arizona, USA",
   year = {2025},
-
 }
 ```
 

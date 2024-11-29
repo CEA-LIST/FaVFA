@@ -10,14 +10,14 @@ from colorama import Fore, Back, Style, init
 # Initialize Colorama
 init(autoreset=True)
 
-def load(dataset, results_path):
+def load(dataset, model_dist):
     """
     Load the dataset metadata and the results from the evaluation. Combines them into a single dataframe.
     :param dataset: name of the evaluation dataset
-    :param results_path: path to the results csv, with 3 columns 'person_1', 'person_2', 'dist'
+    :param model_dist: path to the results csv, with 3 columns 'person_1', 'person_2', 'dist'
     :return: a combined pd.DataFrame
     """
-    results = pd.read_csv(results_path)
+    results = pd.read_csv(model_dist)
 
     assert tuple(results.columns) == ('img_1', 'img_2', 'dist'), "Results csv must have columns 'person_1', 'person_2', 'dist'"
 
@@ -213,15 +213,15 @@ def compute_marginal_effects(df, dataset, alpha=0.05):
         print(f"{variable:<25} : Effect = {effect_color}{row['dy/dx'] * 100: .1f} ±{margin*100: .1f}, {p_color}p_value={row['Pr(>|z|)']:.3f}")
 
 
-def compute(dataset, results_path, alpha):
+def compute(dataset, model_dist, alpha):
     """
     Compute all the results of the paper for a given dataset and a given results file
     :param dataset: str, name of the dataset
-    :param results_path: str, path to the results file
+    :param model_dist: str, path to the results file
     :param alpha: float, significance level
     """
     # Load the data
-    df = load(dataset, results_path)
+    df = load(dataset, model_dist)
 
     # Calculate the best threshold to separate the positive and negative examples
     best_tresh = calculate_thresh(df[df['y_true']==1]['dist'].values, df[df['y_true']==0]['dist'].values)
@@ -267,15 +267,15 @@ def compute(dataset, results_path, alpha):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Compute fairness metrics for a dataset.")
     parser.add_argument('--dataset', type=str, required=True, help="Name of the evaluation dataset.")
-    parser.add_argument('--results_path', type=str, required=True, help="Path to the results csv. Must have columns in order 'img_1', 'img_2'', 'dist'")
+    parser.add_argument('--model_dist', type=str, required=True, help="Path to the results csv. Must have columns in order 'img_1', 'img_2'', 'dist'")
     parser.add_argument('--alpha', type=float, required=False, default=0.05, help="Significance level for ANOVA and marginal effects")
 
     args = parser.parse_args()
     dataset = args.dataset
-    results_path = args.results_path
+    model_dist = args.model_dist
     alpha = args.alpha
 
     assert dataset in ['favcid', 'rfw', 'bfw'], "Dataset must be one of 'favcid', 'rfw', 'bfw'"
     assert 0 < alpha < 1, "Alpha must be between 0 and 1"
 
-    compute(dataset, results_path, alpha)
+    compute(dataset, model_dist, alpha)
