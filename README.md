@@ -1,20 +1,26 @@
-# 🔍Private code for Fairness Analysis for Face Verification 📊
+# 🔍Private code for Fairness Analysis for Face Verification 
+
+This repository provides tools for conducting a comprehensive fairness analysis of face verification models. It is part of the study presented in the paper
+**Fairer Analysis and Demographically Balanced Face Generation for Fairer Face Verification** published at WACV 2025 (see [credits](#-acknowledgments-and-credits))
+
+If you are rather intersted by the fair dataset of synthetic faces and the code to generate one, look at [this repository](https://github.com/afm215/FaVGen-dev).
+
 ## Table of Contents
 1. [✨ Overview](#-overview)
 2. [🗂️ Supported Datasets](#️-supported-datasets)
 3. [📏 Computed Metrics](#computed-metrics)
 4. [⚙️ Example Usage](#️-example-usage)
 5. [🛠️ Setup and Installation](#️-setup-and-installation)
-6. [🙌 Acknowledgments](#-acknowledgments)
-
+6. [🙌 Acknowledgments and Credits](#-acknowledgments-and-credits)
 
 ## ✨ Overview
-This repository provides tools for conducting a comprehensive fairness analysis of face verification models. It is part of the study presented in the paper:
-**[Fairer Analysis and Demographically Balanced Face Generation for Fairer Face Verification](LINK HERE)**.
+This code implements a method to estimate to which extent a face verification method is *fair* that is whether its performance are the same for e.g *male* and *female* persons, do not depend on the age of the person or its ethnicity.
+
+The task of face verification determines whether two face images represent the same person. Given its score on [some academic benchmarks](#️-supported-datasets), it computes [several fainess metrics](#computed-metrics) the quantifies to which extend a particular group (e.g *female*) is better/less well recognized than another one (e.g *male*).
 
 ### Features
 * Computes **basic fairness metrics** (from [Fairlean](https://fairlearn.org/))
-* Performance a **variance analysis of the model's latent space**.
+* Performs a **variance analysis of the model's latent space**.
 * Evaluates the **marginal effects of demographic attributes** (e.g., ethnicity, gender, age) on key metrics such as True Positive Rate (TPR) and False Positive Rate (FPR).
 
 ### Demographic attributes
@@ -82,5 +88,19 @@ Ensure the `data/` directory is populated with the necessary demographic attribu
 
 
 
-## 🙌 Acknowledgments
+## 🙌 Acknowledgments and Credits
 Special thanks to the developers of [Fairlearn](https://fairlearn.org/), [FairFace](https://github.com/joojs/fairface), and [Statsmodels](https://www.statsmodels.org/stable/index.html) for their invaluable tools and resources.
+
+If you find this work useful and use it on your own research, please cite our paper
+```
+@inproceedings{afm2025fairer_analysis,
+  author = {Fournier-Montgieux, Alexandre and Soumm, Michael and Popescu, Adrian and Luvison, Bertrand and Le Borgne, Herv{\'e}},
+  title = {Fairer Analysis and Demographically Balanced Face Generation for Fairer Face Verification},
+  booktitle = {Winter Conference on Applications of Computer Vision (WACV)"},
+  address = "Tucson, Arizona, USA",
+  year = {2025},
+
+}
+```
+
+
