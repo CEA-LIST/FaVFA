@@ -14,9 +14,9 @@ If you are rather intersted by the fair dataset of synthetic faces and the code 
 6. [🙌 Acknowledgments and Credits](#-acknowledgments-and-credits)
 
 ## ✨ Overview
-This code implements a method to estimate to which extent a face verification method is *fair* that is whether its performance are the same for e.g *male* and *female* persons, do not depend on the age of the person or its ethnicity.
+This code implements a method to estimate to which extent a face verification method is *fair* that is whether its performance are the same for e.g *male* and *female* persons, do not depend on the *age* of the person or its *ethnicity*.
 
-The task of face verification determines whether two face images represent the same person. Given its score on [some academic benchmarks](#️-supported-datasets), it computes [several fainess metrics](#computed-metrics) the quantifies to which extend a particular group (e.g *female*) is better/less well recognized than another one (e.g *male*).
+The task of face verification determines whether two face images represent the same person. Given its score on [some academic benchmarks](#️-supported-datasets), our method computes [several fainess metrics](#computed-metrics) then quantifies to which extend a particular group (e.g *female*) is better/less well recognized than another one (e.g *male*).
 
 ### Features
 * Computes **basic fairness metrics** (from [Fairlean](https://fairlearn.org/))
