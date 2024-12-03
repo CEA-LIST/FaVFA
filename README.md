@@ -1,4 +1,4 @@
-# 🔍Private code for Fairness Analysis for Face Verification 
+# 🔍Fairness Analysis for Face Verification 
 
 This repository provides tools for conducting a comprehensive fairness analysis of face verification models. It is part of the study presented in the paper
 **Fairer Analysis and Demographically Balanced Face Generation for Fairer Face Verification** published at WACV 2025 (see [credits](#-acknowledgments-and-credits))
